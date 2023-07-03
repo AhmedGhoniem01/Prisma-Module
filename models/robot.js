@@ -13,7 +13,7 @@ class Robot {
             return robots
         } catch (err) {
             console.log(`[Model-Handling-Error]: Failed to get all robots`)
-            console.log(err.message)
+            console.log(`Error: ${err.message}`)
             throw new Error(`Failed to get all robots`)
         }
     }
@@ -29,7 +29,7 @@ class Robot {
             }
             return robot
         } catch (err) {
-            console.log(err.message)
+            console.log(`Error: ${err.message}`)
             throw new Error(`[Model-Handling-Error]: Failed to get robot entity with robot-id`)
         }
     }
@@ -45,7 +45,7 @@ class Robot {
             }
             return robot
         } catch (err) {
-            console.log(err.message)
+            console.log(`Error: ${err.message}`)
             throw new Error(`[Model-Handling-Error]: Failed to get robot entity with robot-address`)
         }
     }
@@ -61,7 +61,7 @@ class Robot {
             }
             return robots
         } catch (err) {
-            console.log(err.message)
+            console.log(`Error: ${err.message}`)
             throw new Error(`[Model-Handling-Error]: Failed to get robot entities with user-id`)
         }
     }
@@ -77,7 +77,7 @@ class Robot {
             }
             return robots
         } catch (err) {
-            console.log(err.message)
+            console.log(`Error: ${err.message}`)
             throw new Error(`[Model-Handling-Error]: Failed to get connected robot entities`)
         }
     }
@@ -93,7 +93,7 @@ class Robot {
             }
             return robot
         } catch (err) {
-            console.log(err.message)
+            console.log(`Error: ${err.message}`)
             throw new Error(`[Model-Handling-Error]: Failed to get connected robot entities with user-id`)
         }
     }
