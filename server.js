@@ -8,6 +8,8 @@ dotenv.config()
 let port  = process.env.PORT
 
 app.use('/robots', robotRouter)
+app.use('/jobs', robotRouter)
+
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
