@@ -34,21 +34,22 @@ class Robot {
         }
     }
 
-     async GetRobotByAddress(robotAddress) {
+    async GetRobotByAddress(robotAddress) {
         try {
-            const robot = await this.prisma.Robot.findUnique({
-                where: { robotAddress: robotAddress }
-            })
-            if (!robot) {
-                console.log(`No Such Robot found`)
-                return null
-            }
-            return robot
+          const robot = await this.prisma.Robot.findFirst({
+            where: { robotAddress: robotAddress }
+          });
+          if (!robot) {
+            console.log(`No such robot found`);
+            return null;
+          }
+          return robot;
         } catch (err) {
-            console.log(`Error: ${err.message}`)
-            throw new Error(`[Model-Handling-Error]: Failed to get robot entity with robot-address`)
+          console.log(`Error: ${err.message}`);
+          throw new Error(`[Model-Handling-Error]: Failed to get robot entity with robot-address`);
         }
-    }
+      }
+      
 
      async GetUserRobots(userID) {
         try {
@@ -99,6 +100,4 @@ class Robot {
     }
 }
 
-module.exports = {
-    Robot
-}
+module.exports = Robot

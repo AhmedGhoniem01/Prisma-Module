@@ -23,7 +23,7 @@ model Robot {
 
   robotName   String   @unique @db.VarChar(255)
 
-  robotAddress String? @unique @db.VarChar(255)
+  robotAddress String @unique @db.VarChar(255)
 
   socketID String? @unique @db.VarChar(255)
 
@@ -110,7 +110,7 @@ model ScheduledPackage {
 }
 
 model Job{
-  id BigInt @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
   date String
 

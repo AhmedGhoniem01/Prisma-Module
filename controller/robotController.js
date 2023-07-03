@@ -1,10 +1,10 @@
-const { primsa } = require('../index')
-const { Robot } = require('../models/robot')
-const robot = new Robot(primsa)
+const prisma = require('../index')
+const Robot = require('../models/robot')
+const robotModel = new Robot(prisma)
 
 exports.getAllRobots = async (req, res) => {
     try {
-        const robots = await robot.GetAllRobots()
+        const robots = await robotModel.GetAllRobots()
         if (!robots) {
             return res.status(200).json({ Robots: [] })
         }
@@ -19,8 +19,8 @@ exports.getAllRobots = async (req, res) => {
 
 exports.getRobotByID = async (req, res) => {
     try {
-        const robotID = req.params
-        const robot = await robot.GetRobotByID(robotID)
+        const { robotID } = req.params
+        const robot = await robotModel.GetRobotByID(parseInt(robotID))
         if (!robot) {
             return res.status(200).json({ Robot: [] })
         }
@@ -35,24 +35,25 @@ exports.getRobotByID = async (req, res) => {
 
 exports.getRobotByAddress = async (req, res) => {
     try {
-        const robotAddress = req.params
-        const robot = await robot.GetRobotByAddress(robotAddress)
+        const { robotAddress } = req.params;
+        const robot = await robotModel.GetRobotByAddress(robotAddress);
         if (!robot) {
-            return res.status(200).json({ Robot: [] })
+            return res.status(200).json({ Robot: [] });
         }
-        return res.status(200).json({ Robot: robot })
+        return res.status(200).json({ Robot: robot });
     } catch (err) {
         return res.status(500).json({
-            Error: err.message
-            , Robot: []
-        })
+            Error: err.message,
+            Robot: []
+        });
     }
-}
+};
+
 
 exports.getUserRobots = async (req, res) => {
     try {
-        const userID = req.params
-        const robots = await robot.GetUserRobots(userID)
+        const { userID } = req.params
+        const robots = await robotModel.GetUserRobots(parseInt(userID))
         if (!robots) {
             return res.status(200).json({ Robots: [] })
         }
@@ -67,7 +68,7 @@ exports.getUserRobots = async (req, res) => {
 
 exports.getAllConnectedRobots = async (req, res) => {
     try {
-        const robots = await robot.GetAllConnectedRobots()
+        const robots = await robotModel.GetAllConnectedRobots()
         if (!robots) {
             return res.status(200).json({ Robots: [] })
         }
@@ -82,8 +83,8 @@ exports.getAllConnectedRobots = async (req, res) => {
 
 exports.getUserConnectedRobots = async (req, res) => {
     try {
-        const userID = req.params
-        const robots = await robot.GetUserConnectedRobots(userID)
+        const { userID } = req.params
+        const robots = await robotModel.GetUserConnectedRobots(parseInt(userID))
         if (!robots) {
             return res.status(200).json({ Robots: [] })
         }

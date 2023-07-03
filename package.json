@@ -20,6 +20,6 @@
     "prisma"
   ],
   "devDependencies": {
-    "prisma": "^4.14.0"
+    "prisma": "^4.16.2"
   }
 }
